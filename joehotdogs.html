@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Joe's Hotdogs</title>
+    <script>
+        const menu = {
+            "Hot Dogs": 4.65,
+            "French Fries": 3.75,
+            "Drinks": 1.89
+        };
+        const discount = 0.10;
+        const tax = 0.0625;
+
+        quantity = {
+            "Hot Dogs": 0,
+            "French Fries": 0,
+            "Drinks": 0
+        };
+
+        function askQuantity(item) {
+            quantity[item] = parseInt(prompt("How many " + item + " would you like?"));
+
+            while (quantity[item] < 0) {
+                quantity[item] = parseInt(prompt("Please enter a valid quantity for " + item));
+            }
+        }
+
+        function twoDecimals(num) {
+            num = Math.round(num * 100) / 100;
+            var str = num.toString();
+            var decimal = str.indexOf(".");
+            if (decimal == -1) {
+                return str + ".00";
+            } else if (str.length - decimal == 2) {
+                return str + "0";
+            } else {
+                return str.substring(0, decimal + 3);
+            }
+        }
+        function showMoney() {
+            let subtotal = 0;
+            for (let item in menu) {
+                askQuantity(item);
+                subtotal += menu[item] * quantity[item];
+            }
+            var discount = 0;
+            if (subtotal >= 25) {
+                discount = subtotal * 0.10;
+                discount = twoDecimals(discount);
+            }
+            subtotal -= discount;
+            subtotal = twoDecimals(subtotal);
+            var tax = subtotal * 0.0625;
+            tax = twoDecimals(tax);
+            var total = subtotal + tax;
+            total = twoDecimals(total);
+
+            document.write("<h2> Receipt </h2>");
+            document.write("<p> ___________________________ </p>");
+            document.write("<p> Items &emsp; &emsp; Quantity &emsp; Cost </p>");
+
+            for (let item in menu) {
+                document.write("<p>" + item + " &emsp;&emsp;" + quantity[item] + " &emsp;&emsp; $ " + twoDecimals(quantity[item] * menu[item]) + "</p>");
+            }
+            document.write("<p> ___________________________ </p>");
+            document.write("<p> Subtotal: &emsp;&emsp; $ " + subtotal + "</p>");
+            if (discount > 0) {
+                document.write("<p> Discount: &emsp;&emsp;&emsp; $ " + discount + "</p>");
+            }
+            document.write("<p> Tax: &emsp;&emsp;&emsp; $ " + tax + "</p>");
+            document.write("<p> Total: &emsp;&emsp; $ " + total + "</p>");
+        }
+        
+    </script>
+</head>
+<body>
+    <h1>Joe's Hotdogs</h1>
+    <button onclick="showMoney()">Place Order</button>
+</body>
+</html>
