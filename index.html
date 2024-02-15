@@ -1,43 +1,91 @@
 <!DOCTYPE html>
 <html>
-    <title>
-        Prince Millidah
-    </title>
-    <body style="background-color:rgb(197, 233, 233)">
-        <h1 style="text-align:center; font-size:40px;"> Prince M. </h1>
+<head>
+    <meta charset="utf-8">
+    <title>Joe's Hotdogs</title>
+    <script>
+        
+        const Hotdogs = 4.65;
+        const Frenchfries = 3.75;
+        const Drinks = 1.89;
+    
+        const discount = 0.10;
+        const tax = 0.0625;
 
-        <h2 style="text-align:center"> Computer Science at Tufts University</span></h2>
+        numHotdogs = 0;
+        numFrenchfries = 0;
+        numDrinks = 0;
 
-        <p> I grew in small city near <strong>Accra</strong>
-            , Ghana known as Tema. <br>
-            I am currently a sophomore at Tufts University studying Computer Science. <br>
-            My computer's IP address is <address style="color:blue">130.64.64.36</address>
-        </p>
+        function askQuantity() {
+            numHotdogs = parseInt(prompt("How many Hotdogs would you like?"));
+            while (numHotdogs < 0) {
+                numHotdogs = parseInt(prompt("Please enter a valid quantity for Hotdogs"));
+            }
 
-        <img src="dewick.jpg" style="float:left; border: 10px; margin-right:20px;">
+            numFrenchfries = parseInt(prompt("How many Frenchfries would you like?"));
+            while (numFrenchfries < 0) {
+                numFrenchfries = parseInt(prompt("Please enter a valid quantity for Frenchfries"));
+            }
 
-        <p style="font-size: 20px; font-family:Georgia, 'Times New Roman', Times, serif;">
-            This is my favourite restaurant.<br> I actually love the place because it
-            the first I ate from when first came to Tufts and United States as a whole. <br>
-            I love the food and the environment. <br>
-        </p>
-        <p>
-            Click <a href=
-            "https://dining.tufts.edu/where-to-eat/dewick-macphie-dining-center"
-            style="font-weight:bold" target="_blank">here
-            </a> visit the restaurant's menu.
-        </p>
-        <h3>Fun Facts about me</h3>
-        <ul>
-            <li> I love to play soccer</li>
-            <li> I love to play video games</li>
-            <li> I love to watch movies</li>
-            <li> I love to travel</li>
-        </ul>
-        <p>
-            Tufts University is a great place to be. 
-            I love the environment and the people.
-            I am currently taking a course in Web Engineering and I am loving it.
-            I am learning a lot and I am excited to learn more.
-        </p>
+            numDrinks = parseInt(prompt("How many Drinks would you like?"));
+            while (numDrinks < 0) {
+                numDrinks = parseInt(prompt("Please enter a valid quantity for Drinks"));
+            }
+        }
+
+        function twoDecimals(num) {
+            num = Math.round(num * 100) / 100;
+            var str = num.toString();
+            var decimal = str.indexOf(".");
+            if (decimal == -1) {
+                return str + ".00";
+            } else if (str.length - decimal == 2) {
+                return str + "0";
+            } else {
+                return str.substring(0, decimal + 3);
+            }
+        }
+
+        function showMoney() {
+            let subtotal = 0;
+            askQuantity();
+            var discount = 0;
+
+            subtotal = (Hotdogs * numHotdogs) + (Frenchfries * numFrenchfries) + (Drinks * numDrinks);
+
+            if (subtotal >= 25) {
+                discount = subtotal * 0.10;
+                discount = twoDecimals(discount);
+            }
+
+            subtotal -= discount;
+            subtotal = twoDecimals(subtotal);
+
+            var tax = subtotal * 0.0625;
+            tax = twoDecimals(tax);
+
+            var total = subtotal + tax;
+            total = twoDecimals(total);
+
+            document.write("<h2> Receipt </h2>");
+            document.write("<p> ___________________________ </p>");
+            document.write("<p> Items &emsp; &emsp; Quantity &emsp; Cost </p>");
+            document.write("<p> Hotdogs &emsp;&emsp;" + numHotdogs + " &emsp;&emsp; $ " + twoDecimals(numHotdogs * Hotdogs) + "</p>");
+            document.write("<p> Frenchfries &emsp;&emsp;" + numFrenchfries + " &emsp;&emsp; $ " + twoDecimals(numFrenchfries * Frenchfries) + "</p>");
+            document.write("<p> Drinks &emsp;&emsp;" + numDrinks + " &emsp;&emsp; $ " + twoDecimals(numDrinks * Drinks) + "</p>");
+            document.write("<p> ___________________________ </p>");
+            document.write("<p> Subtotal: &emsp;&emsp; $ " + subtotal + "</p>");
+            if (discount > 0) {
+                document.write("<p> Discount: &emsp;&emsp;&emsp; $ " + discount + "</p>");
+            }
+            document.write("<p> Tax: &emsp;&emsp;&emsp; $ " + tax + "</p>");
+            document.write("<p> Total: &emsp;&emsp; $ " + total + "</p>");
+        }
+        
+    </script>
+</head>
+<body>
+    <h1>Joe's Hotdogs</h1>
+    <button onclick="showMoney()">Place Order</button>
+</body>
 </html>
