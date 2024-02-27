@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div id="turnIndicator" class="turn-indicator"></div>
+    <div id="board" class="board">
+        <script>
+            const NUM_SQUARES = 9;
+            for (let i = 0; i < NUM_SQUARES; i++) {
+                const id = "sq" + i;
+                document.write("<div class='square' id='" + id + "'></div>");
+            }
+            const squares = document.querySelectorAll('.square');
+            let turn = Math.random() < 0.5 ? 'X' : 'O';
+            document.getElementById('turnIndicator').textContent = turn + "'s Turn";
+            squares.forEach((square) => {
+                square.addEventListener('click', () => {
+                    square.textContent = turn;
+                    turn = turn === 'X' ? 'O' : 'X';
+                    document.getElementById('turnIndicator').textContent = turn + "'s Turn";
+                });
+            });
+        </script>
+    </div>
+    <div class="win-condition"> Win Indicator </div>
+    <button id="restart" class="reset-button">Start Game
+      <script>
+        document.getElementById('restart').addEventListener('click', () => {
+            squares.forEach((square) => {
+                square.textContent = '';
+            });
+            turn = Math.random() < 0.5 ? 'X' : 'O';
+            document.getElementById('turnIndicator').textContent = turn + "'s Turn";
+        });
+      </script>
+    </button>
+    <script src="script.js"></script>
+</body>
+</html>
