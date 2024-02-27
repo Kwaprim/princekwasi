@@ -1,92 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Joe's Hotdogs</title>
-    <script>
-        
-        const Hotdogs = 4.65;
-        const Frenchfries = 3.75;
-        const Drinks = 1.89;
-    
-        const discount = 0.10;
-        const tax = 0.0625;
-
-        numHotdogs = 0;
-        numFrenchfries = 0;
-        numDrinks = 0;
-
-        function askQuantity() {
-            numHotdogs = parseInt(prompt("How many Hotdogs would you like?"));
-            while (numHotdogs < 0) {
-                numHotdogs = parseInt(prompt("Please enter a valid quantity for Hotdogs"));
-            }
-
-            numFrenchfries = parseInt(prompt("How many Frenchfries would you like?"));
-            while (numFrenchfries < 0) {
-                numFrenchfries = parseInt(prompt("Please enter a valid quantity for Frenchfries"));
-            }
-
-            numDrinks = parseInt(prompt("How many Drinks would you like?"));
-            while (numDrinks < 0) {
-                numDrinks = parseInt(prompt("Please enter a valid quantity for Drinks"));
-            }
-        }
-
-        function twoDecimals(num) {
-            num = Math.round(num * 100) / 100;
-            var str = num.toString();
-            var decimal = str.indexOf(".");
-            if (decimal == -1) {
-                return str + ".00";
-            } else if (str.length - decimal == 2) {
-                return str + "0";
-            } else {
-                return str.substring(0, decimal + 3);
-            }
-        }
-
-        function showMoney() {
-            let subtotal = 0;
-            askQuantity();
-            var discount = 0;
-
-            subtotal = (Hotdogs * numHotdogs) + (Frenchfries * numFrenchfries) + (Drinks * numDrinks);
-
-            if (subtotal >= 25) {
-                discount = subtotal * 0.10;
-                discount = twoDecimals(discount);
-            }
-
-            subtotal -= discount;
-            subtotal = twoDecimals(subtotal);
-
-            var tax = subtotal * 0.0625;
-            tax = twoDecimals(tax);
-
-            var total = subtotal + tax;
-            total = twoDecimals(total);
-
-            document.write("<h2> Receipt </h2>");
-            document.write("<p> ___________________________ </p>");
-            document.write("<p> Items &emsp; &emsp; Quantity &emsp; Cost </p>");
-            document.write("<p> Hotdogs &emsp;&emsp;" + numHotdogs + " &emsp;&emsp; $ " + twoDecimals(numHotdogs * Hotdogs) + "</p>");
-            document.write("<p> Frenchfries &emsp;&emsp;" + numFrenchfries + " &emsp;&emsp; $ " + twoDecimals(numFrenchfries * Frenchfries) + "</p>");
-            document.write("<p> Drinks &emsp;&emsp;" + numDrinks + " &emsp;&emsp; $ " + twoDecimals(numDrinks * Drinks) + "</p>");
-            document.write("<p> ___________________________ </p>");
-            document.write("<p> Subtotal: &emsp;&emsp; $ " + subtotal + "</p>");
-            if (discount > 0) {
-                document.write("<p> Discount: &emsp;&emsp;&emsp; $ " + discount + "</p>");
-            }
-            document.write("<p> Tax: &emsp;&emsp;&emsp; $ " + tax + "</p>");
-            document.write("<p> Total: &emsp;&emsp; $ " + total + "</p>");
-        }
-        
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
-    <h1>Joe's Hotdogs</h1>
-    <button onclick="showMoney()">Place Order</button><br><br>
-    <a href="extracredit.html"> Go to Extra Credit <a/>
+    <h1>Tic Tac Toe</h1>
+    <div id="turnIndicator" class="turn-indicator"></div>
+    <div id="board" class="board"></div>
+    <div class="win-condition" id="win-indicator"> Win Indicator </div>
+    <button id="restart" class="reset-button">Start Game</button>
+    <script src="script.js"></script>
 </body>
 </html>
