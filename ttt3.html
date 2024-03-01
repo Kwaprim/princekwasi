@@ -23,6 +23,8 @@
             squares.forEach((square) => {
                 square.addEventListener('click', () => {
                     square.textContent = turn;
+                    int squareId = Number(square.id.slice(2));
+                    alert("You selected a square of index " + squareId)
                     turn = turn === 'X' ? 'O' : 'X';
                     document.getElementById('turnIndicator').textContent = turn + "'s Turn";
                 });
