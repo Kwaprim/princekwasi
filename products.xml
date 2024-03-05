@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href = "styles.css" ?>
+<products>
+    <shirt>
+        <name> Polo Shirt </name>
+        <description> classic polo shirt released in 1959 </description>
+        <price> 25.00 </price>
+        <categories>
+            <category> vintage </category>
+            <category> medium </category>
+            <category> mens </category>
+        </categories>
+    </shirt>
+    <dress>
+        <name> Versace Purple Dress </name>
+        <description> First purple dress designed by Versace </description>
+        <price> 900.00 </price>
+        <categories>
+            <category> classic </category>
+            <category> small </category>
+            <category> womens </category>
+        </categories>
+    </dress>
+    <shoes>
+        <name> Nike Air Max </name>
+        <description> First Nike Air Max released in 1987 </description>
+        <price> 120.00 </price>
+        <categories>
+            <category> classic </category>
+            <category> medium </category>
+            <category> mens </category>
+        </categories>
+    </shoes>
+    <shoes>
+        <name> Adidas Superstar </name>
+        <description> First Adidas Superstar released in 1969 </description>
+        <price> 80.00 </price>
+        <categories>
+            <category> classic </category>
+            <category> medium </category>
+            <category> womens </category>
+        </categories>
+    </shoes>
+    <dress>
+        <name> Chanel Black Dress </name>
+        <description> First black dress designed by Chanel </description>
+        <price> 1500.00 </price>
+        <categories>
+            <category> classic </category>
+            <category> medium </category>
+            <category> womens </category>
+        </categories>
+    </dress>
+    <shirt>
+        <name> Ralph Lauren Polo Shirt </name>
+        <description> classic polo shirt released in 1972 </description>
+        <price> 30.00 </price>
+        <categories>
+            <category> vintage </category>
+            <category> medium </category>
+            <category> mens </category>
+        </categories>
+    </shirt>
+    <shoes>
+        <name> Converse All Star </name>
+        <description> First Converse All Star released in 1917 </description>
+        <price> 60.00 </price>
+        <categories>
+            <category> classic </category>
+            <category> medium </category>
+            <category> womens </category>
+        </categories>
+    </shoes>
+    <dress>
+        <name> Gucci Red Dress </name>
+        <description> First red dress designed by Gucci </description>
+        <price> 2000.00 </price>
+        <categories>
+            <category> classic </category>
+            <category> medium </category>
+            <category> womens </category>
+        </categories>
+    </dress>
+    <shirt>
+        <name> Lacoste Polo Shirt </name>
+        <description> classic polo shirt released in 1933 </description>
+        <price> 35.00 </price>
+        <categories>
+            <category> vintage </category>
+            <category> medium </category>
+            <category> mens </category>
+        </categories>
+    </shirt>
+    <shoes>
+        <name> Vans Old Skool </name>
+        <description> First Vans Old Skool released in 1977 </description>
+        <price> 70.00 </price>
+        <categories>
+            <category> classic </category>
+            <category> medium </category>
+            <category> womens </category>
+        </categories>
+    </shoes>
+</products>
