@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JSON Product Filter</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <style type="text/css">
+        body,html {
+            font-size: 24px;
+        }
+        h1 {
+            font-size: 1.5em;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+        p {
+            font-size: 1em;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        $(document).ready(function(){
+            // Fetch products data from JSON
+            $.get("https://kwaprim.github.io/kiame/products.json", function(data) {
+
+                var categories = [];
+                data.forEach(function(product) {
+                    product.categories.forEach(function(category) {
+                        if (!categories.includes(category)) {
+                            categories.push(category);
+                        }
+                    });
+                });
+                categories.forEach(function(category) {
+                    $('#category-select').append('<option value="' + category + '">' + category + '</option>');
+                });
+
+                // Filter products based on selected category
+                $('#filter-btn').click(function() {
+                    var selectedCategory = $('#category-select').val();
+                    var filteredProducts = data.filter(function(product) {
+                        return product.categories.includes(selectedCategory);
+                    });
+                    var filteredStr = "<div class='container'>";
+                    filteredProducts.forEach(function(product) {
+                        filteredStr += "<h1>" + product.name + "</h1>";
+                        filteredStr += "</div>";
+                    });
+                    $('#filtered-data').html(filteredStr);
+                });
+            });
+        });
+    </script>
+
+    <div id="json-data">&nbsp;</div>
+
+    <div>
+        <select id="category-select">
+        </select>
+        <button id="filter-btn">Filter</button>
+    </div>
+
+    <div id="filtered-data">&nbsp;</div>
+
+</body>
+</html>

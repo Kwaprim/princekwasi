@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JSON Pet Object</title>
+	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   
+	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   
+	crossorigin="anonymous"></script>
+
+	<style type="text/css">
+		body,html {font-size: 24px;}
+		h1 {
+            font-size: 1.5em;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+        p {
+            font-size: 1em;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            border-color: aqua;
+            border-width: 1px;
+            border-style: solid;
+            padding: 10px;
+        }
+	</style>
+</head>
+
+<body>
+	<script language="javascript">
+	$.get( "https://kwaprim.github.io/kiame/products.json", 
+			function( data ) {
+                str = "<div class='container'>";
+				data.forEach(function(product) { 
+                    str += "<h1>" + product.name + "</h1>";
+                    str += "<p>" + product.description + "</p><br>";
+                    str += "<p> Price: " + product.price + "</p><br>";
+                    str += "<p> Categories: ";
+                    product.categories.forEach(function(category) {
+                        str += category + ', ';
+                    });
+                    str += "</p><br>";
+				})
+                str += "</div>";
+            document.getElementById('json-data').innerHTML = str;  
+	})
+</script>
+	<div id="json-data">&nbsp;</div>
+</body>
+</html>
